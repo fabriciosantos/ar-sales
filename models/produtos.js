@@ -3,8 +3,9 @@ module.exports = function () {
     var Schema = require('mongoose').Schema;
 
     var Produto = new Schema({
-       name : {type : String, required :true},
-    foto : {type : Buffer }
+       nome : {type : String, required :true},
+       descricao : {type : String},
+       foto : {type : Buffer }
     });
 
     return db.model('Produtos', Produto);

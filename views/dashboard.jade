@@ -7,8 +7,9 @@ block content
       input(ng-model='user.name')
       a(class="btn btn-success" ,ng-href="#createUser") Gravar Outras
     div(style="width=800")
-      div(style="float : left; padding: 10px" ng-repeat="user in users | filter:user.name | orderBy:'user.name'")
-        label Name : {{user.name}}
+      div(style="float : left; padding: 10px" ng-repeat="user in users | filter:user.nome | orderBy:'user.nome'")
+        label Nome : {{user.nome}}
+        label Descrição : {{user.descricao}}
         a(class="btn btn-primary" ,ng-href="#dashboard", ng-click="delete(user , $index)") Delete
         br
         img(class="img-circle" ,alt="{{user.name}}", height="200", width="200" ,ng-src="{{user.foto}}")
