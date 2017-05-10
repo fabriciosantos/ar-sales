@@ -1,0 +1,14 @@
+block content
+  .container
+    div(class="alert-success",ng-if="msg")
+      p {{msg}}
+    div(ng-if="users.length")
+      label Buscar 
+      input(ng-model='user.name')
+      a(class="btn btn-success" ,ng-href="#createUser") Gravar Outras
+    div(style="width=800")
+      div(style="float : left; padding: 10px" ng-repeat="user in users | filter:user.name | orderBy:'user.name'")
+        label Name : {{user.name}}
+        a(class="btn btn-primary" ,ng-href="#dashboard", ng-click="delete(user , $index)") Delete
+        br
+        img(class="img-circle" ,alt="{{user.name}}", height="200", width="200" ,ng-src="{{user.foto}}")

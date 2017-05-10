@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div(class="container" , ng-app="App" ,ng-controller="UserCtrl")
+    ul(class="nav nav-tabs")
+      li(role="presentation")
+        a(href='#usercreate') Create User 
+      li(role="presentation")
+        a(href='#dashboard') Dashboard
+    .ng-view

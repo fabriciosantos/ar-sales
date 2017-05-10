@@ -1,0 +1,21 @@
+block content
+  if error
+    .alert-danger
+      p #{error}
+  .container
+    div(class="container-fluid")
+    form(action="/user", method="POST", enctype="multipart/form-data")
+      div(class="form-group") 
+        label(for="name")  Name
+        input(class="form-control", type='text', name='name')
+      div(class="form-group") 
+        label(for="descricao")  Descrição
+        input(class="form-control", type='text', name='descricao')
+      div(class="form-group") 
+        label(for="image_2d") Imagem 2D
+        input(class="btn btn-primary" ,type='file', name='image_2d', id='image_2d')
+      div(class="form-group") 
+        label(for="image_3d") Imagem 3D
+        input(class="btn btn-primary" ,type='file', name='image_3d', id='image_3d')
+      div
+        button(class="btn btn-primary", type='submit') Save
