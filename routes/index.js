@@ -9,7 +9,7 @@ var User = require('./../models/produtos')();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-	res.render('index', { title: 'Express' })
+	res.render('index', { title: 'AR-Sales' })
 });
 
 router.get('/user', function (req, res) {
