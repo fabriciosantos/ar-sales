@@ -33,7 +33,7 @@ router.get('/user/:id', function (req, res) {
 		res.render('userDetails', {
 			id: user._id,
 			nome: user.nome,
-			descricao: user.descricao.
+			descricao: user.descricao,
 			foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
 		})
 	})
