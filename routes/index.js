@@ -65,7 +65,7 @@ router.get('/createUser', function (req, res) {
 router.post('/user', function (req, res, next) {
 	var form = new formidable.IncomingForm();
 	form.parse(req, function (err, fields, files) {
-		var img = files.foto;
+		//var img = files.foto;
 
 		fs.readFile(img.path, function (err, data) {
 			User.create({
