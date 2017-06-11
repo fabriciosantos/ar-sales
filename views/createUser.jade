@@ -4,7 +4,7 @@ block content
       p #{error}
   .container
     div(class="container-fluid")
-    form(action="/user", method="POST")
+    form(action="/user", method="POST", enctype="multipart/form-data")
       div(class="form-group") 
         label(for="nome")  Nome
         input(class="form-control", type='text', name='nome')
