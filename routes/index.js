@@ -19,8 +19,8 @@ router.get('/user', function (req, res) {
 			response.push({
 				id: user._id,
 				nome: user.nome,
-				descricao: user.descricao,
-				foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
+				descricao: user.descricao
+				//foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
 			})
 		})
 		res.json(response || '')
@@ -33,8 +33,8 @@ router.get('/user/:id', function (req, res) {
 		res.render('userDetails', {
 			id: user._id,
 			nome: user.nome,
-			descricao: user.descricao,
-			foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
+			descricao: user.descricao
+			//foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
 		})
 	})
 })
@@ -70,8 +70,8 @@ router.post('/user', function (req, res, next) {
 		fs.readFile(img.path, function (err, data) {
 			User.create({
 				nome: fields.nome,
-				descricao: fields.descricao,
-				foto: data
+				descricao: fields.descricao
+				//foto: data
 			}, function (err, user) {
 				if (err) {
 					error = err;
