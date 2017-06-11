@@ -6,8 +6,8 @@ function userHandler() {
 
   schema = new Schema({
     nome: { type: String, required: true },
-    descricao: { type: String }
-    //foto: { type: Buffer }
+    descricao: { type: String },
+    foto: { type: Buffer }
   });
 
   return mongoose.model('User', schema);
