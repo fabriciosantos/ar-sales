@@ -43,7 +43,7 @@ router.get('/teste', function (req, res) {
 	var response = ''
 	User.find({}, function (err, users) {
 		users.forEach(function (user) {
-			response= user.foto.toString('base64');
+			response= user.foto;
 			
 		})		
 		res.send(response || '')
