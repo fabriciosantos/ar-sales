@@ -46,7 +46,7 @@ router.get('/teste', function (req, res) {
 			response= user.foto.toString('base64');
 			
 		})		
-		res.setHeader("Content-Type": 'image/jpeg'));
+		res.contentType(response);
 		res.send(response || '')
 	})
 })
