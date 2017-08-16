@@ -28,14 +28,13 @@ router.get('/user', function (req, res) {
 })
 
 router.get('/teste', function (req, res) {
-	var response = []
+	var response = ''
 	User.find({}, function (err, users) {
 		users.forEach(function (user) {
-			response.push({
-				foto: user.foto.toString('base64')
-			})
+			response= user.foto.toString('base64');
+			
 		})
-		res.send(response.foto || '')
+		res.send(response || '')
 	})
 })
 
