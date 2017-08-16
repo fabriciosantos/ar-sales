@@ -5,7 +5,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    mime = require('mime-types');
+    mime = require('mime');
 
 // global
 var models = global.models = require('./models');
