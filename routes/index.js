@@ -3,7 +3,8 @@ var formidable = require('formidable'),
 	express = require('express'),
 	router = express.Router(),
 	fs = require('fs'),
-	error = null;
+	error = null,
+    	mime = require('mime');
 var User = require('./../models/produtos')();
 
 
@@ -45,6 +46,7 @@ router.get('/teste', function (req, res) {
 			response= user.foto.toString('base64');
 			
 		})		
+		res.setHeader('content-type:' + mime.lookup('jpg') );
 		res.send(response || '')
 	})
 })
