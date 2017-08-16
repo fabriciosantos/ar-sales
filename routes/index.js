@@ -32,7 +32,7 @@ router.get('/teste', function (req, res) {
 	User.find({}, function (err, users) {
 		users.forEach(function (user) {
 			response.push({
-				user.foto.toString('base64')
+				foto: user.foto.toString('base64')
 			})
 		})
 		res.json(response || '')
