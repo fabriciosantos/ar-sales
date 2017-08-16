@@ -4,7 +4,8 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    mime = require('mime-types');
 
 // global
 var models = global.models = require('./models');
