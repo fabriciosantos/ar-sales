@@ -27,6 +27,18 @@ router.get('/user', function (req, res) {
 	})
 })
 
+router.get('/teste', function (req, res) {
+	var response = []
+	User.find({}, function (err, users) {
+		users.forEach(function (user) {
+			response.push({
+				foto: user.foto.toString('base64')
+			})
+		})
+		res.json(response || '')
+	})
+})
+
 router.get('/user/:id', function (req, res) {
 	User.findOne({ _id: req.params.id }, function (err, user) {
 		if (err) throw err;
