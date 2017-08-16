@@ -34,7 +34,7 @@ router.get('/testejpg', function (req, res) {
 			response= 'data:image/jpeg;base64,' + user.foto.toString('base64');
 			
 		})
-		res.setHeader("Content-Type", 'image/jpeg'));
+		res.setHeader("Content-Type": 'image/jpeg'));
 		res.send(response || '')
 	})
 })
@@ -46,7 +46,7 @@ router.get('/teste', function (req, res) {
 			response= user.foto.toString('base64');
 			
 		})		
-		res.setHeader("Content-Type", 'image/jpeg'));
+		res.setHeader("Content-Type": 'image/jpeg'));
 		res.send(response || '')
 	})
 })
