@@ -35,7 +35,7 @@ router.get('/teste', function (req, res) {
 				foto: user.foto.toString('base64')
 			})
 		})
-		res.json(response || '')
+		res.send(response.foto || '')
 	})
 })
 
