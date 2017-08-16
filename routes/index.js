@@ -31,10 +31,9 @@ router.get('/testejpg', function (req, res) {
 	var response = ''
 	User.find({}, function (err, users) {
 		users.forEach(function (user) {
-			response= user.foto;
+			response= user.foto.toString('base64');
 			
 		})
-		res.setHeader("Content-Type": 'image/jpeg'));
 		res.send(response || '')
 	})
 })
@@ -43,10 +42,9 @@ router.get('/teste', function (req, res) {
 	var response = ''
 	User.find({}, function (err, users) {
 		users.forEach(function (user) {
-			response= user.foto;
+			response= user.foto.toString('base64');
 			
 		})		
-		res.contentType(response);
 		res.send(response || '')
 	})
 })
