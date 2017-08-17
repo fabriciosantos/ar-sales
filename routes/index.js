@@ -32,7 +32,7 @@ router.get('/testejpg', function (req, res) {
 	var response = ''
 	User.find({}, function (err, users) {
 		users.forEach(function (user) {
-			response= user.foto.toString('base64');
+			response= 'http://res.cloudinary.com/dxmpntiki/image/upload/v1502987310/sample.jpg';
 			
 		})		
 		res.send(response || '')
