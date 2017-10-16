@@ -33,10 +33,10 @@ router.get('/user', function (req, res) {
 		})
 		res.json(response || '')
 	})
-})
+});
 
 router.get('/user/:id', function (req, res) {
-	User.findOne({ _id: req.params.id }, function (err, user) {
+	User.findOne({ _id: req.params.id}, function (err, user) {
 		if (err) throw err;
 		res.render('userDetails', {
 			id: user._id,
@@ -46,12 +46,15 @@ router.get('/user/:id', function (req, res) {
 			url : user.public_id
 		})
 	})
-})
+});
+
 router.delete('/user/:id', function (req, res) {
-	user.findOne({_id: req.params.id},function(err, user){
-		cloudinary.uploader.destroy(user.url).then(function (result) {
-		});
-	)};
+	User.findOne({_id: req.params.id}, function(err, user){
+		cloudinary.uploader.destroy(user.url, function (result) {
+			if (err) throw err;
+		})
+	});
+
 	User.remove({ _id: req.params.id }, function (err, result) {
 
 		if (err) {
