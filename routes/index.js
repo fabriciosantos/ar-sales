@@ -27,7 +27,8 @@ router.get('/user', function (req, res) {
 				id: user._id,
 				nome: user.nome,
 				descricao: user.descricao,
-				foto: user.foto
+				foto: user.foto,
+				url : user.public_id
 			})
 		})
 		res.json(response || '')
@@ -41,11 +42,16 @@ router.get('/user/:id', function (req, res) {
 			id: user._id,
 			nome: user.nome,
 			descricao: user.descricao,
-			foto: user.foto
+			foto: user.foto,
+			url : user.public_id
 		})
 	})
 })
 router.delete('/user/:id', function (req, res) {
+	user.findOne({_id: req.params.id},function(err, user){
+		cloudinary.uploader.destroy(user.url).then(function (result) {
+		});
+	)};
 	User.remove({ _id: req.params.id }, function (err, result) {
 
 		if (err) {
@@ -78,7 +84,8 @@ router.post('/user', function (req, res, next) {
 				User.create({
 					nome: fields.nome,
 					descricao: fields.descricao,
-					foto: result.url
+					foto: result.url,
+					url : result.public_id
 				}, function (err, user) {
 					console.log('foto', user);
 					if (err) {
