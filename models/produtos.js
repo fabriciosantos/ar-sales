@@ -5,7 +5,7 @@ module.exports = function () {
     var Produto = new Schema({
        nome : {type : String, required :true},
        descricao : {type : String},
-       foto : {type : Buffer }
+       foto : {type : String }
     });
 
     return db.model('Produtos', Produto);

@@ -4,9 +4,15 @@ var formidable = require('formidable'),
 	router = express.Router(),
 	fs = require('fs'),
 	error = null,
-    	mime = require('mime');
+	mime = require('mime');
 var User = require('./../models/produtos')();
 
+var cloudinary = require('cloudinary');
+cloudinary.config({
+	cloud_name: 'dxmpntiki',
+	api_key: '277797349887776',
+	api_secret: 'YhqhTZvhxY9t1Y_QqlAcKilh4Hs'
+});
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -21,32 +27,10 @@ router.get('/user', function (req, res) {
 				id: user._id,
 				nome: user.nome,
 				descricao: user.descricao,
-				foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
+				foto: user.foto
 			})
 		})
 		res.json(response || '')
-	})
-})
-
-router.get('/testejpg', function (req, res) {
-	var response = ''
-	User.find({}, function (err, users) {
-		users.forEach(function (user) {
-			response= 'http://res.cloudinary.com/dxmpntiki/image/upload/v1502987310/sample.jpg';
-			
-		})		
-		res.send(response || '')
-	})
-})
-
-router.get('/teste', function (req, res) {
-	var response = ''
-	User.find({}, function (err, users) {
-		users.forEach(function (user) {
-			response= user.foto;
-			
-		})		
-		res.send(response || '')
 	})
 })
 
@@ -57,7 +41,7 @@ router.get('/user/:id', function (req, res) {
 			id: user._id,
 			nome: user.nome,
 			descricao: user.descricao,
-			foto: 'data:image/jpeg;base64,' + user.foto.toString('base64')
+			foto: user.foto
 		})
 	})
 })
@@ -89,24 +73,25 @@ router.post('/user', function (req, res, next) {
 	var form = new formidable.IncomingForm();
 	form.parse(req, function (err, fields, files) {
 		var img = files.foto;
-
-		fs.readFile(img.path, function (err, data) {
-			User.create({
-				nome: fields.nome,
-				descricao: fields.descricao,
-				foto: data
-			}, function (err, user) {
-				if (err) {
-					error = err;
-					res.redirect('/#createUser');
-				}
-				if (user) {
-					error = null;
-					res.redirect('/#dashboard');
-				}
+		//fs.readFile(img.path, function (err, data) {
+			cloudinary.uploader.upload(img.path).then(function (result) {
+				User.create({
+					nome: fields.nome,
+					descricao: fields.descricao,
+					foto: result.url
+				}, function (err, user) {
+					console.log('foto', user);
+					if (err) {
+						error = err;
+						res.redirect('/#createUser');
+					}
+					if (user) {
+						error = null;
+						res.redirect('/#dashboard');
+					}
+				});
 			});
-
-		});
+		//});
 	});
 
 });
