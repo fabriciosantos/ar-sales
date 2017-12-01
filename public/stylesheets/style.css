@@ -7,7 +7,12 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  line-height: 3 !important;
   
+}
+
+.container {
+  padding-left: 0px !important;
 }
 
 a {
