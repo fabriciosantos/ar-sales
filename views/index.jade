@@ -1,10 +1,13 @@
 extends layout
 
 block content
+
   div(class="container" , ng-app="App" ,ng-controller="UserCtrl")
-    ul(class="nav nav-tabs")
+    ul(class="nav nav-tabs menu")
       li(role="presentation")
         a(href='#usercreate') Create User 
       li(role="presentation")
         a(href='#dashboard') Dashboard
+      li(role="presentation")
+        a(href='https://fabriciosantos.github.io/') Sair
     .ng-view
