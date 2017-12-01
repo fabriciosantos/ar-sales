@@ -5,8 +5,7 @@ block content
     div(ng-if="users.length")
       label Buscar 
       input(ng-model='user.name')
-      a(class="btn btn-success" ,ng-href="#createUser") Gravar Outras
-    div(style="width=800")
+     div(style="width=800")
       div(style="float : left; padding: 10px" ng-repeat="user in users | filter:user.nome | orderBy:'user.nome'")
         label Nome : {{user.nome}}
         br
