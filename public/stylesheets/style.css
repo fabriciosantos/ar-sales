@@ -36,7 +36,7 @@ input {
   background-color: #ff5933 !important;
 }
 
-btn-success {
+.btn-success {
   color: #ffffff !important;
   font-size: 14px !important;
   font-family: 'Open Sans','Helvetica Neue','Arial','sans-serif';
